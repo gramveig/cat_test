@@ -1,67 +1,91 @@
+using System;
 using System.Collections.Generic;
-using Cat.States;
 using UnityEngine;
 
 namespace Cat
 {
-    public class Cat
+    public class Cat : MonoBehaviour
     {
-        private CatMood _mood;
-        private CatMood _moodBad;
-        private CatMood _moodGood;
-        private CatMood _moodGreat;
+        [SerializeField]
         private List<CatMood> _moodSeq;
-        
+
+        [SerializeField]
+        private CatMood _startMood;
+
+        private CatMood _curMood;
+
         private void Awake()
         {
-            _moodBad = new CatMoodBad(this);
-            _moodGood = new CatMoodGood(this);
-            _moodGreat = new CatMoodGreat(this);
-            _moodSeq = new List<CatMood> { _moodBad, _moodGood, _moodGreat };
-
-            _mood = _moodBad;
+            _curMood = _startMood;
         }
 
         public void Play()
         {
-            _mood.Play();
+            _curMood.Play();
         }
 
         public void Feed()
         {
-            _mood.Feed();
+            _curMood.Feed();
         }
 
         public void Pet()
         {
-            _mood.Pet();
+            _curMood.Pet();
         }
 
         public void Kick()
         {
-            _mood.Kick();
+            _curMood.Kick();
         }
 
-        public void ChangeMoodToBetter()
+        public void ChangeMood(CatMoodChange moodChange)
         {
-            int curMoodIdx = _moodSeq.IndexOf(_mood);
-            if (curMoodIdx > _moodSeq.Count - 2)
+            switch (moodChange)
             {
-                Debug.LogError("Cat is already in the best mood");
+                case CatMoodChange.None: break;
+                case CatMoodChange.ToWorst: ChangeMoodToWorst();
+                    break;
+                case CatMoodChange.ToWorse: ChangeMoodToWorse();
+                    break;
+                case CatMoodChange.ToBetter: ChangeMoodToBetter();
+                    break;
+                case CatMoodChange.ToBest: ChangeMoodToBest();
+                    break;
+                default: throw new Exception("Unknown mood change");
+            }
+        }
+
+        private void ChangeMoodToWorst()
+        {
+            _curMood = _moodSeq[0];
+        }
+
+        private void ChangeMoodToWorse()
+        {
+            int curMoodIdx = _moodSeq.IndexOf(_curMood);
+            if (curMoodIdx == 0)
+            {
                 return;
             }
 
-            ChangeMood(_moodSeq[curMoodIdx + 1]);
+            _curMood = _moodSeq[curMoodIdx - 1];
+        }
+        
+        private void ChangeMoodToBetter()
+        {
+            int curMoodIdx = _moodSeq.IndexOf(_curMood);
+            if (curMoodIdx > _moodSeq.Count - 2)
+            {
+                return;
+            }
+
+            _curMood = _moodSeq[curMoodIdx + 1];
         }
 
-        public void ChangeMoodToWorst()
+        private void ChangeMoodToBest()
         {
-            ChangeMood(_moodSeq[0]);
-        }
-
-        private void ChangeMood(CatMood newMood)
-        {
-            _mood = newMood;
+            _curMood = _moodSeq[^1];
         }
     }
 }
