@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5317572df24c1a84d6f059fcbe736d, type: 3}
+  m_Name: CatMoodExcellent
+  m_EditorClassIdentifier: 
+  _playBehaviour:
+    catReaction: {fileID: 0}
+    moodChange: 0
+  _feedBehaviour:
+    catReaction: {fileID: 0}
+    moodChange: 0
+  _petBehaviour:
+    catReaction: {fileID: 0}
+    moodChange: 0
+  _kickBehaviour:
+    catReaction: {fileID: 0}
+    moodChange: 1
