@@ -2,24 +2,29 @@ namespace Cat.States
 {
     public class CatMoodGood : CatMood
     {
+        public CatMoodGood(Cat cat)
+        {
+            Cat = cat;
+        }
+        
         public override void Play()
         {
-            throw new System.NotImplementedException();
+            Cat.ChangeMoodToBetter();
         }
 
         public override void Feed()
         {
-            throw new System.NotImplementedException();
+            Cat.ChangeMoodToBetter();
         }
 
         public override void Pet()
         {
-            throw new System.NotImplementedException();
+            Cat.ChangeMoodToBetter();
         }
 
         public override void Kick()
         {
-            throw new System.NotImplementedException();
+            Cat.ChangeMoodToWorst();
         }
     }
 }

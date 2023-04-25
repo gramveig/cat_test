@@ -2,9 +2,7 @@ namespace Cat
 {
     public abstract class CatMood
     {
-        public virtual void Start()
-        {
-        }
+        protected Cat Cat;
 
         public abstract void Play();
         public abstract void Feed();
