@@ -14,6 +14,9 @@ namespace Cat
         [SerializeField]
         private CatBehaviour _kickBehaviour;
 
+        [SerializeField]
+        private Color _color;
+        
         private Cat _cat;
         private CatReaction _curReaction;
 
@@ -47,6 +50,6 @@ namespace Cat
         }
 
         public CatReaction Reaction => _curReaction;
-
+        public Color Color => _color;
     }
 }

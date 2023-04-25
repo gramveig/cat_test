@@ -24,3 +24,4 @@ MonoBehaviour:
   _kickBehaviour:
     catReaction: {fileID: 11400000, guid: a99a9ae56bafa1445ba2e08276badb98, type: 2}
     moodChange: 0
+  _color: {r: 1, g: 0, b: 0, a: 1}
