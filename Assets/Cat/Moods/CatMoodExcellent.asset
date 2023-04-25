@@ -25,3 +25,4 @@ MonoBehaviour:
     catReaction: {fileID: 11400000, guid: b144f94440ad75f4d9ce59d6c7b61d09, type: 2}
     moodChange: 1
   _color: {r: 0, g: 1, b: 0, a: 1}
+  _image: {fileID: 3542605443879392458, guid: 62b95fd15e5f63147b1d86657304d76e, type: 3}

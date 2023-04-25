@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cat
 {
@@ -16,6 +17,9 @@ namespace Cat
 
         [SerializeField]
         private Color _color;
+
+        [SerializeField]
+        private Image _image;
         
         private Cat _cat;
         private CatReaction _curReaction;
