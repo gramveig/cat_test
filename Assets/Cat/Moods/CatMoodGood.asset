@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: CatMoodGood
   m_EditorClassIdentifier: 
   _playBehaviour:
-    catReaction: {fileID: 0}
+    catReaction: {fileID: 11400000, guid: 2b14c8d02c5b4b841a7da15b173f8f0e, type: 2}
     moodChange: 3
   _feedBehaviour:
-    catReaction: {fileID: 0}
+    catReaction: {fileID: 11400000, guid: 41c399232bd77d340823f0e7ba42cf71, type: 2}
     moodChange: 3
   _petBehaviour:
-    catReaction: {fileID: 0}
+    catReaction: {fileID: 11400000, guid: 2b25be0e00aee1e40827ce5e76fe23f5, type: 2}
     moodChange: 3
   _kickBehaviour:
-    catReaction: {fileID: 0}
+    catReaction: {fileID: 11400000, guid: 4a96e5aeb40029740bdd4cab75fef1e5, type: 2}
     moodChange: 1
