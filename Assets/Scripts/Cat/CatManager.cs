@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Cat
 {
-    public class Cat : MonoBehaviour
+    public class CatManager : MonoBehaviour
     {
         [SerializeField]
         private List<CatMood> _moodSeq;
@@ -17,6 +17,10 @@ namespace Cat
         private void Awake()
         {
             _curMood = _startMood;
+            foreach (var mood in _moodSeq)
+            {
+                mood.Init(this);
+            }
         }
 
         public void Play()

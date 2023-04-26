@@ -21,36 +21,36 @@ namespace Cat
         [SerializeField]
         private Image _image;
         
-        private Cat _cat;
+        private CatManager _catManager;
         private CatReaction _curReaction;
 
-        public void Init(Cat cat)
+        public void Init(CatManager catManager)
         {
-            _cat = cat;
+            _catManager = catManager;
         }
         
         public void Play()
         {
             _curReaction = _playBehaviour.catReaction;
-            _cat.ChangeMood(_playBehaviour.moodChange);
+            _catManager.ChangeMood(_playBehaviour.moodChange);
         }
 
         public void Feed()
         {
             _curReaction = _feedBehaviour.catReaction;
-            _cat.ChangeMood(_feedBehaviour.moodChange);
+            _catManager.ChangeMood(_feedBehaviour.moodChange);
         }
 
         public void Pet()
         {
             _curReaction = _petBehaviour.catReaction;
-            _cat.ChangeMood(_petBehaviour.moodChange);
+            _catManager.ChangeMood(_petBehaviour.moodChange);
         }
 
         public void Kick()
         {
             _curReaction = _kickBehaviour.catReaction;
-            _cat.ChangeMood(_kickBehaviour.moodChange);
+            _catManager.ChangeMood(_kickBehaviour.moodChange);
         }
 
         public CatReaction Reaction => _curReaction;
