@@ -75,7 +75,9 @@ namespace Cat
             Model.Reaction.Value = reaction.ReactionString;
             Debug.Log("Set reaction: " + Model.Reaction.Value);
         }
-        
+
+        public GameObject CatImagePrefab => _curMood.ImagePrefab;
+
         private void ChangeMoodToWorst()
         {
             _curMood = _moodSeq[0];

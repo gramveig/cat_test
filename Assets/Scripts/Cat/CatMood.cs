@@ -19,7 +19,7 @@ namespace Cat
         private Color _color;
 
         [SerializeField]
-        private Image _image;
+        private GameObject _imagePrefab;
         
         private CatManager _catManager;
 
@@ -53,5 +53,6 @@ namespace Cat
         }
 
         public Color Color => _color;
+        public GameObject ImagePrefab => _imagePrefab;
     }
 }
