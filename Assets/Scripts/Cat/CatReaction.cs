@@ -8,6 +8,6 @@ namespace Cat
         [SerializeField]
         private string _reaction;
 
-        public string Reaction => _reaction;
+        public string ReactionString => _reaction;
     }
 }

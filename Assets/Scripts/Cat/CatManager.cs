@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 namespace Cat
@@ -12,16 +13,25 @@ namespace Cat
         [SerializeField]
         private CatMood _startMood;
 
+        public CatModel Model;
+
         private CatMood _curMood;
+        private static CatManager _instance;
 
         private void Awake()
         {
+            _instance = this;
+            
             _curMood = _startMood;
             foreach (var mood in _moodSeq)
             {
                 mood.Init(this);
             }
+
+            Model = new CatModel(_moodSeq.IndexOf(_curMood), _moodSeq.Count);
         }
+
+        public static CatManager Instance => _instance;
 
         public void Play()
         {
@@ -60,9 +70,17 @@ namespace Cat
             }
         }
 
+        public void SetReaction(CatReaction reaction)
+        {
+            Model.Reaction.Value = reaction.ReactionString;
+            Debug.Log("Set reaction: " + Model.Reaction.Value);
+        }
+        
         private void ChangeMoodToWorst()
         {
             _curMood = _moodSeq[0];
+            Model.Mood.Value = 0;
+            Debug.Log("Set mood to " + 0);
         }
 
         private void ChangeMoodToWorse()
@@ -73,7 +91,10 @@ namespace Cat
                 return;
             }
 
-            _curMood = _moodSeq[curMoodIdx - 1];
+            int newMoodIdx = curMoodIdx - 1;
+            _curMood = _moodSeq[newMoodIdx];
+            Model.Mood.Value = newMoodIdx;
+            Debug.Log("Set mood to " + newMoodIdx);
         }
         
         private void ChangeMoodToBetter()
@@ -84,12 +105,18 @@ namespace Cat
                 return;
             }
 
-            _curMood = _moodSeq[curMoodIdx + 1];
+            int newMoodIdx = curMoodIdx + 1;
+            _curMood = _moodSeq[newMoodIdx];
+            Model.Mood.Value = newMoodIdx;
+            Debug.Log("Set mood to " + newMoodIdx);
         }
 
         private void ChangeMoodToBest()
         {
-            _curMood = _moodSeq[^1];
+            int newMoodIdx = _moodSeq.Count - 1;
+            _curMood = _moodSeq[newMoodIdx];
+            Model.Mood.Value = newMoodIdx;
+            Debug.Log("Set mood to " + newMoodIdx);
         }
     }
 }
