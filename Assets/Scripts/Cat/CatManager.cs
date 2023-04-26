@@ -78,6 +78,8 @@ namespace Cat
 
         public GameObject CatImagePrefab => _curMood.ImagePrefab;
 
+        public Color CatMoodColor => _curMood.Color;
+
         private void ChangeMoodToWorst()
         {
             _curMood = _moodSeq[0];
